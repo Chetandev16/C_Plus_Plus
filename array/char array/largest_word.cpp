@@ -19,6 +19,7 @@ int main()
          maxlen = currlen;
       currlen=0;  
      }
+     else
      currlen++;
      if(a[i]=='\0')
      {
@@ -26,6 +27,6 @@ int main()
      }
      i++;
    }
-   cout<<maxlen-1;
+   cout<<maxlen;
   return 0;
 }
