@@ -17,6 +17,7 @@ int main()
 {
     Node *head = new Node(10);
     Node *temp1 = new Node(20);
+    s
     Node *temp2 = new Node(30);
 
     head -> next = temp1;
