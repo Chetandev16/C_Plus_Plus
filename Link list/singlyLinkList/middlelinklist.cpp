@@ -21,6 +21,7 @@ void printlist(Node *node)
     }
 }
 /* gfg code*/
+/*
 int Middlelinklist(Node *node)
 {
     Node *slow = node;
@@ -31,8 +32,9 @@ int Middlelinklist(Node *node)
     }
     return slow->data;
 }
+*/
 /* MYcode */
-/*int Middlelinklist(Node *node)
+int Middlelinklist(Node *node)
 {
     int count = 0;
     Node *curr = node;
@@ -71,7 +73,7 @@ int Middlelinklist(Node *node)
 
     return ans->data;
 }
-*/
+
 int main()
 {
     Node *head = new Node(10);
