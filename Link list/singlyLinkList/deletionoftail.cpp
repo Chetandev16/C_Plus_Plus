@@ -28,7 +28,7 @@ Node *deleteNode(Node *node)
         return NULL;
     if (node->next == NULL)
     {
-        delete (node->next);
+        delete (node);
         return NULL;
     }
 
