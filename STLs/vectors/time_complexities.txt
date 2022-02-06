@@ -1,0 +1,13 @@
+push_back - o(1) worst - O(n)
+pop_back - O(1)
+
+front()                                    O(1) for all
+back()
+empty()
+begin(),rbegin(),crbegin, cbegin  
+end() , rend,crend,cend 
+size()
+
+insert - O(n)
+erase - O(n)
+resize - O(n)
