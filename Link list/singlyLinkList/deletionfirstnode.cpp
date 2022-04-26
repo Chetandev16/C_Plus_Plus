@@ -28,6 +28,20 @@ Node *deletefirst(Node *node){
     delete(node);
     return curr;
 }
+Node *deletemid(Node *node, int data){
+    if(node == NULL){
+        return NULL;
+    }
+
+    Node *curr = node;
+    while(curr->next->data != data ){
+        curr = curr->next;
+    }
+    Node *temp = curr->next;
+    curr->next = temp->next;
+    delete(temp);
+    return node;
+}
 
 int main(){
     Node *head = new Node(10);
@@ -36,7 +50,7 @@ int main(){
     head->next->next->next = new Node(40);
 
     printlist(head);
-    head = deletefirst(head);
+    head = deletemid(head,30);
     cout<<endl;
     printlist(head);
     return 0;

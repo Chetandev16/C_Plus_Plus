@@ -2,24 +2,30 @@
 
 using namespace std;
 
-bool subarray(int arr[], int size, int k)
+vector<int> subarray(int arr[], int size, int k)
 {
-    unordered_set<int> s;
+    vector<int> ans;
+    unordered_map<int,int> s;
     int presum = 0;
     for (int i = 0; i < size; i++)
     {
         presum = presum + arr[i];
         if (presum == k)
         {
-            return true;
+            ans.push_back(1);
+            ans.push_back(i+1);
+            return ans;
         }
         if (s.find(presum - k) != s.end())
         {
-            return true;
+            ans.push_back(s[presum-k]+1);
+            ans.push_back(i+1);
+            return ans;
         }
-        s.insert(presum);
+        s[presum] = i;
     }
-    return false;
+    ans.push_back(-1);
+    return ans;
 }
 
 int main()
@@ -32,11 +38,13 @@ int main()
         cin >> arr[i];
     }
 
-    bool ans;
+    vector<int> ans;
     int k;
     cin >> k;
     ans = subarray(arr, size, k);
 
-    ans ? cout << "true" : cout << "fasle";
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<" ";
+    }
     return 0;
 }
