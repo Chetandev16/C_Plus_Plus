@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solv(int &n)
-{
-    if (n < 1)
-        return;
+//backtracking
 
-    cout << n << " ";
-    n--;
-    solv(n); // agar call by ref nahi kara to n-1 call  
+void solv(int i)
+{
+    if (i < 1)
+        return;
+    solv(i-1);
+    cout << i << endl;
 }
 
 int main()
