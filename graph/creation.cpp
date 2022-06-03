@@ -8,7 +8,7 @@ class graph
 public:
     unordered_map<int, list<int>> adj;
     void addEdge(int u,int v, bool direction){
-        //direction = 0 undirected
+        //direction = 0 undirected  
         // direction  =1 directed
 
         // create edge from u to v
