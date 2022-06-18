@@ -4,59 +4,43 @@ using namespace std;
 class Graph
 {
 public:
-    unordered_map<int, list<pair<int, int>>> adj;
+    unordered_map<int,list<pair<int,int>>> adj;
 
-    void add(int u, int v, int w)
-    {
-        adj[u].push_back(make_pair(v, w));
+    void add(int u,int v, int w){
+        adj[u].push_back({v,w});
     }
 
-    void printList()
-    {
-        cout << "ADJ LIST:- \n";
-        for (auto i : adj)
-        {
-            cout << i.first << "->";
-            for (auto j : i.second)
-            {
-                cout << "[" << j.first << "," << j.second << "],";
-            }
-            cout << endl;
-        }
-    }
+    void dfsTopo(int i,unordered_map<int,bool> &visited, stack<int> &s){
+        visited[i] = true;
 
-    void dfs(int node, unordered_map<int, bool> &visited, stack<int> &s)
-    {
-        visited[node] = true;
-
-        for (auto it : adj[node])
-        {
-            if (!visited[it.first])
-            {
-                dfs(it.first, visited, s);
+        for(auto it:adj[i]){
+            if(!visited[it.first]){
+                dfsTopo(it.first,visited,s);
             }
         }
 
-        s.push(node);
+        s.push(i);
     }
-
-    void sPath(int src, vector<int> &dist, int n, stack<int> &s)
-    {
-
+    void printList(){
+        for(auto it: adj){
+            cout<<it.first<<"->";
+            for(auto j:it.second){
+                cout<<"{"<<j.first<<","<<j.second<<"},";
+            }
+            cout<<endl;
+        }
+    }
+    void sPath(int src,vector<int> &dist,int n, stack<int> &s){
         dist[src] = 0;
 
-        while (s.empty() == false)
-        {
-            int top = s.top();
+        while(s.empty() == false){
+            int t = s.top();
             s.pop();
 
-            if (dist[top] != INT_MAX)
-            {
-                for (auto i : adj[top])
-                {
-                    if (dist[top] + i.second < dist[i.first])
-                    {
-                        dist[i.first] = dist[top] + i.second;
+            if(dist[t] != INT_MAX){
+                for(auto it: adj[t]){
+                    if(dist[t] + it.second < dist[it.first]){
+                        dist[it.first] = dist[t] + it.second;
                     }
                 }
             }
@@ -89,7 +73,7 @@ int main()
     {
         if (!visited[i])
         {
-            g.dfs(i, visited, s);
+            g.dfsTopo(i, visited, s);
         }
     }
     vector<int> dist(n);
