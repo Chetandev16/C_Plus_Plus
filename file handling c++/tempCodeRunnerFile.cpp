@@ -1,1 +1,2 @@
-obj << "some random text!"<<endl;
+obj.print();
+        obj1.print();
