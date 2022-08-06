@@ -15,3 +15,9 @@ class BookMyShow{
         this->theaters = {};
     }
 };
+
+int main(){
+
+
+    return 0;
+}
